@@ -1,0 +1,38 @@
+{
+  "name": "his-compfest-api",
+  "version": "1.0.0",
+  "description": "Healtcare Information System API for Software Engineer Academy at COMPFEST 13",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "jest --watch ./ -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdmmar/his-compfest-api.git"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdmmar/his-compfest-api/issues"
+  },
+  "homepage": "https://github.com/abdmmar/his-compfest-api#readme",
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "husky": "^4.3.8",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.0.0",
+    "nodemon": "^2.0.9",
+    "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.2"
+  }
+}

@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  api:
+    container_name: his_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stoped
+    env_file: .env
+    environment:
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=db
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$MONGO_DB
+    ports:
+      - '9191:9191'
+    depends_on:
+      - 'db'
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - api-network
+  db:
+    image: mongo:latest
+    container_name: his_db
+    env_file: .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+    volumes:
+      - db:/data/db
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    driver: bridge
+
+volumes:
+  db:
+  node_modules:
