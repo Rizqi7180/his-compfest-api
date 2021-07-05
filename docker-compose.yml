@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    restart: unless-stoped
+    restart: unless-stopped
     env_file: .env
     environment:
       - MONGO_USERNAME=$MONGO_USERNAME
@@ -14,13 +14,13 @@ services:
       - MONGO_HOSTNAME=db
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
+      - PORT=$PORT
     ports:
       - '9191:9191'
     depends_on:
       - 'db'
     volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
+      - .:/server
     networks:
       - api-network
   db:
@@ -41,4 +41,3 @@ networks:
 
 volumes:
   db:
-  node_modules:

@@ -6,7 +6,7 @@ const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_HOSTNAME, MONGO_PORT, MONGO_DB } =
 const options = {
   useNewUrlParser: true,
   reconnectTries: Number.MAX_VALUE,
-  reconnectInterval: 500,
+  reconnectInterval: 1000,
   connectTimeoutMS: 10000,
 }
 
