@@ -39,4 +39,18 @@ const validateCreateUser = [
     .withMessage('Invalid role type'),
 ]
 
-export { validateCreateUser }
+const validateAuthUser = [
+  body('username')
+    .exists()
+    .withMessage('username is required')
+    .isLength({ min: 3 })
+    .withMessage('username must be at least 3 chars long'),
+  body('password')
+    .exists()
+    .withMessage('password is required')
+    .notEmpty()
+    .isLength({ min: 6 })
+    .withMessage('password must contain at least 6 characters'),
+]
+
+export { validateCreateUser, validateAuthUser }
