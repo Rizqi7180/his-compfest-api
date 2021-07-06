@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  api:
+  server:
     container_name: his_api
     build:
       context: .
@@ -30,14 +30,18 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
       - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+      - MONGO_INITDB_DATABASE=$MONGO_DB
     volumes:
-      - db:/data/db
+      - mongodb:/data/db
+      - ./src/config/entrypoint/entrypoint.js:/docker-entrypoint-initdb.d/entrypoint.js:ro
     networks:
       - api-network
+    ports:
+      - '27017:27017'
 
 networks:
   api-network:
     driver: bridge
 
 volumes:
-  db:
+  mongodb:
