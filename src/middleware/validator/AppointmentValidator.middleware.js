@@ -22,4 +22,13 @@ const validateUpdateAppointment = [
   body('id').exists().withMessage('Id is required'),
 ]
 
-export { validateCreateAppointment, validateUpdateAppointment }
+const validateApplyAppointment = [
+  body('id').exists().withMessage('Id is required'),
+  body('user_id').exists().withMessage('User_id is required'),
+]
+
+export {
+  validateCreateAppointment,
+  validateUpdateAppointment,
+  validateApplyAppointment,
+}

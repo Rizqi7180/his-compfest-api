@@ -4,6 +4,7 @@ import * as AppointmentController from '../controllers/Appointment.controller.js
 import { authMiddleware, isAdmin } from '../middleware/auth.middleware.js'
 import validate from '../middleware/validate.middleware.js'
 import {
+  validateApplyAppointment,
   validateCreateAppointment,
   validateUpdateAppointment,
 } from '../middleware/validator/AppointmentValidator.middleware.js'
@@ -26,6 +27,13 @@ router.put(
   validateUpdateAppointment,
   validate,
   AppointmentController.update
+)
+router.post(
+  '/apply',
+  authMiddleware,
+  validateApplyAppointment,
+  validate,
+  AppointmentController.apply
 )
 
 export default router

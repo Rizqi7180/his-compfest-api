@@ -1,4 +1,5 @@
 import Appointment from '../model/Appointment.model.js'
+import User from '../model/User.model.js'
 import HttpException from '../utils/HttpException.js'
 
 export async function create(req, res, next) {
@@ -59,6 +60,50 @@ export async function update(req, res, next) {
       type: 'success',
       status: 200,
       message: 'Appointment list',
+      data: appointment,
+    })
+  } catch (error) {
+    return next(new HttpException(500, error.message))
+  }
+}
+
+export async function apply(req, res, next) {
+  try {
+    const { id, user_id } = req.body
+
+    const appointment = await Appointment.findById(id)
+
+    if (!appointment) {
+      return next(new HttpException(400, 'Appointment not found'))
+    }
+
+    for (const registrant of appointment.registrant_list) {
+      if (registrant.user_id === user_id) {
+        return next(new HttpException(400, 'Appointment has been applied'))
+      }
+    }
+
+    const patient = await User.findById(user_id)
+
+    if (!patient) {
+      return next(new HttpException(400, 'Patient not found'))
+    }
+
+    const registrant = {
+      user_id: patient._id,
+      first_name: patient.first_name,
+      last_name: patient.last_name,
+      age: patient.age,
+    }
+
+    appointment.registrant_list.push(registrant)
+
+    await appointment.save()
+
+    return res.json({
+      type: 'success',
+      status: 200,
+      message: 'Apply appointment successfully',
       data: appointment,
     })
   } catch (error) {
