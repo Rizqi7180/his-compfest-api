@@ -1,5 +1,6 @@
 import Appointment from '../model/Appointment.model.js'
 import User from '../model/User.model.js'
+import { findIndex } from '../utils/findIndex.js'
 import HttpException from '../utils/HttpException.js'
 
 export async function create(req, res, next) {
@@ -125,6 +126,34 @@ export async function apply(req, res, next) {
       status: 200,
       message: 'Apply appointment successfully',
       data: appointment,
+    })
+  } catch (error) {
+    return next(new HttpException(500, error.message))
+  }
+}
+
+export async function cancel(req, res, next) {
+  try {
+    const { id, user_id } = req.body
+
+    const appointment = await Appointment.findById(id)
+
+    if (!appointment) {
+      return next(new HttpException(400, 'Appointment not found'))
+    }
+
+    const index = findIndex(appointment.registrant_list, user_id)
+
+    if (index === -1) return next(new HttpException(400, "You haven't applied"))
+
+    appointment.registrant_list.splice(index, 1)
+
+    await appointment.save()
+
+    return res.json({
+      type: 'success',
+      status: 200,
+      message: 'Cancel appointment successfully',
     })
   } catch (error) {
     return next(new HttpException(500, error.message))

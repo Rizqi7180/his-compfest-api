@@ -8,6 +8,7 @@ import {
   validateCreateAppointment,
   validateDeleteAppointment,
   validateUpdateAppointment,
+  validateCancelAppointment,
 } from '../middleware/validator/AppointmentValidator.middleware.js'
 
 const router = express.Router()
@@ -43,6 +44,13 @@ router.post(
   validateApplyAppointment,
   validate,
   AppointmentController.apply
+)
+router.post(
+  '/cancel',
+  authMiddleware,
+  validateCancelAppointment,
+  validate,
+  AppointmentController.cancel
 )
 
 export default router
