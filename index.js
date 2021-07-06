@@ -8,6 +8,7 @@ import HttpException from './src/utils/HttpException.js'
 import errorMiddleware from './src/middleware/error.middleware.js'
 import mongoose from './src/config/db.js'
 import user from './src/routes/User.route.js'
+import appointment from './src/routes/Appointment.route.js'
 
 const app = express()
 const PORT = process.env.PORT || 9191
@@ -27,6 +28,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/user', user)
+app.use('/appointment', appointment)
 
 app.all('*', (req, res, next) => {
   const error = new HttpException(404, 'Endpoint not found')
