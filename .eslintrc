@@ -10,5 +10,5 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "rules": { "strict": ["error", "never"] }
+  "rules": { "strict": ["error", "never"], "no-unused-vars": "warn" }
 }

@@ -5,11 +5,12 @@ import {
   validateCreateUser,
   validateAuthUser,
 } from '../middleware/validator/UserValidator.middleware.js'
+import { authMiddleware } from '../middleware/auth.middleware.js'
 import validate from '../middleware/validate.middleware.js'
 
 const router = express.Router()
 
-router.get('/', UserController.get)
+router.get('/:id?', authMiddleware, UserController.getOne)
 router.post('/register', validateCreateUser, validate, UserController.create)
 router.post('/login', validateAuthUser, validate, UserController.auth)
 

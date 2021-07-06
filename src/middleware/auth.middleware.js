@@ -28,8 +28,6 @@ export async function isAdmin(req, res, next) {
 
     const admin = await User.findById(info.id)
 
-    console.log(admin)
-
     if (admin.role === 'admin') next()
   } catch (err) {
     return next(new HttpException(500, err.message))

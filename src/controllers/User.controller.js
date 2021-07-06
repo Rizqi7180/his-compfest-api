@@ -72,15 +72,20 @@ export async function auth(req, res, next) {
   }
 }
 
-export async function get(req, res, next) {
+export async function getOne(req, res, next) {
   try {
-    const users = await User.find()
+    const id = req.decoded.role !== 'admin' ? req.decoded.id : req.params.id
+
+    if (!id) return next(new HttpException(400, 'Id required'))
+
+    const data = await User.findById(id)
+    const { role, password, ...user } = data.toObject()
 
     return res.json({
       type: 'success',
       status: 200,
-      message: 'List of user',
-      data: users,
+      message: 'User detail information',
+      data: user,
     })
   } catch (error) {
     return next(new HttpException(500, error.message))
