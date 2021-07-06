@@ -67,6 +67,26 @@ export async function update(req, res, next) {
   }
 }
 
+export async function remove(req, res, next) {
+  try {
+    const { id } = req.params
+
+    const appointment = await Appointment.findByIdAndDelete(id)
+
+    if (!appointment) {
+      return next(new HttpException(400, 'Appointment not found'))
+    }
+
+    return res.json({
+      type: 'success',
+      status: 200,
+      message: 'Appointment deleted successfully',
+    })
+  } catch (error) {
+    return next(new HttpException(500, error.message))
+  }
+}
+
 export async function apply(req, res, next) {
   try {
     const { id, user_id } = req.body

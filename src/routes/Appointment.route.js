@@ -6,6 +6,7 @@ import validate from '../middleware/validate.middleware.js'
 import {
   validateApplyAppointment,
   validateCreateAppointment,
+  validateDeleteAppointment,
   validateUpdateAppointment,
 } from '../middleware/validator/AppointmentValidator.middleware.js'
 
@@ -27,6 +28,14 @@ router.put(
   validateUpdateAppointment,
   validate,
   AppointmentController.update
+)
+router.delete(
+  '/delete/:id',
+  authMiddleware,
+  isAdmin,
+  validateDeleteAppointment,
+  validate,
+  AppointmentController.remove
 )
 router.post(
   '/apply',

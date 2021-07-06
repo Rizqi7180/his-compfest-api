@@ -1,4 +1,4 @@
-import { body } from 'express-validator'
+import { body, param } from 'express-validator'
 
 const validateCreateAppointment = [
   body('doctor_name')
@@ -27,8 +27,13 @@ const validateApplyAppointment = [
   body('user_id').exists().withMessage('User_id is required'),
 ]
 
+const validateDeleteAppointment = [
+  param('id').exists().withMessage('Id is required'),
+]
+
 export {
   validateCreateAppointment,
   validateUpdateAppointment,
   validateApplyAppointment,
+  validateDeleteAppointment,
 }
