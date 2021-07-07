@@ -13,7 +13,7 @@ import {
 
 const router = express.Router()
 
-router.get('/', authMiddleware, isAdmin, AppointmentController.get)
+router.get('/', authMiddleware, AppointmentController.get)
 router.post(
   '/',
   authMiddleware,
