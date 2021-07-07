@@ -22,8 +22,13 @@ const AppointmentSchema = new Schema({
         age: Number,
       },
     ],
+    validate: [limit, 'Appointment is fully booked'],
   },
 })
+
+function limit(val) {
+  return val.length <= 10
+}
 
 const Appointment = mongoose.model('Appointment', AppointmentSchema)
 
