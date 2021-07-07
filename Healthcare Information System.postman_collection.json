@@ -1,0 +1,411 @@
+{
+  "info": {
+    "_postman_id": "e543e627-d21a-4c31-8075-7096f80c4c92",
+    "name": "Healthcare Information System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"ammar@mail.com\",\r\n    \"first_name\": \"ammar\",\r\n    \"last_name\": \"ammar\",\r\n    \"username\": \"ammar\",\r\n    \"password\": \"ammar123\",\r\n    \"age\": 21,\r\n    \"role\": \"patient\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9191/user/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9191",
+              "path": ["user", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9191/user/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9191",
+              "path": ["user", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get One User",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTQyNjIyN2YwNWE1M2ZjMGVjZDIzMSIsImZpcnN0X25hbWUiOiJhbW1hciIsInJvbGUiOiJwYXRpZW50IiwiaWF0IjoxNjI1NjM0NjIzLCJleHAiOjE2MjU2MzgyMjN9.SOvgZD2GvYGnJysk7RXncDorb5UEt_gsSIsJ45_zIsw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9191/user/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9191",
+              "path": ["user", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Appointmnet",
+      "item": [
+        {
+          "name": "Get Appointment List",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTQyNjIyN2YwNWE1M2ZjMGVjZDIzMSIsImZpcnN0X25hbWUiOiJhbW1hciIsInJvbGUiOiJwYXRpZW50IiwiaWF0IjoxNjI1NjM0NjIzLCJleHAiOjE2MjU2MzgyMjN9.SOvgZD2GvYGnJysk7RXncDorb5UEt_gsSIsJ45_zIsw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9191/appointment/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9191",
+              "path": ["appointment", ""]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Appointment List",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:9191/appointment/",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "9191",
+                  "path": ["appointment", ""]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "448"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1c0-yeSzxCJXlERidQediVlPMq/t+QU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 07 Jul 2021 05:22:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"success\",\n    \"status\": 200,\n    \"message\": \"Appointment list\",\n    \"data\": [\n        {\n            \"_id\": \"60e47f034acf903d44227f85\",\n            \"doctor_name\": \"Jason\",\n            \"description\": \"Covid 19 Delta Varian Diagnostic\",\n            \"registrant_list\": [\n                {\n                    \"_id\": \"60e537d2d54f5e1ed06b592b\",\n                    \"user_id\": \"60e426227f05a53fc0ecd231\",\n                    \"first_name\": \"ammar\",\n                    \"last_name\": \"ammar\",\n                    \"age\": 21\n                }\n            ],\n            \"__v\": 23\n        },\n        {\n            \"_id\": \"60e539fd6b988646a86fcbcf\",\n            \"doctor_name\": \"James Clear\",\n            \"description\": \"Atomic Habits\",\n            \"registrant_list\": [],\n            \"__v\": 0\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get One Appointment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTQyNjIyN2YwNWE1M2ZjMGVjZDIzMSIsImZpcnN0X25hbWUiOiJhbW1hciIsInJvbGUiOiJwYXRpZW50IiwiaWF0IjoxNjI1NjM0NjIzLCJleHAiOjE2MjU2MzgyMjN9.SOvgZD2GvYGnJysk7RXncDorb5UEt_gsSIsJ45_zIsw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9191/appointment/60e47f034acf903d44227f85",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9191",
+              "path": ["appointment", "60e47f034acf903d44227f85"]
+            }
+          },
+          "response": [
+            {
+              "name": "Get One Appointment",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:9191/appointment/60e47f034acf903d44227f85",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "9191",
+                  "path": ["appointment", "60e47f034acf903d44227f85"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "338"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"152-Ntw1ODidkxc4pOgO0Xf/1e6F+Z8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 07 Jul 2021 05:20:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"type\": \"success\",\n    \"status\": 200,\n    \"message\": \"Appointment detail information\",\n    \"data\": {\n        \"_id\": \"60e47f034acf903d44227f85\",\n        \"doctor_name\": \"Jason\",\n        \"description\": \"Covid 19 Delta Varian Diagnostic\",\n        \"registrant_list\": [\n            {\n                \"_id\": \"60e537d2d54f5e1ed06b592b\",\n                \"user_id\": \"60e426227f05a53fc0ecd231\",\n                \"first_name\": \"ammar\",\n                \"last_name\": \"ammar\",\n                \"age\": 21\n            }\n        ],\n        \"__v\": 23\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Appointment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTQxYjQ0MDFjYWFhMjdhNGY2OWE4NiIsImZpcnN0X25hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYyNTYzNTI4OCwiZXhwIjoxNjI1NjM4ODg4fQ.BykzElDxps-AaX1JvyZVtkSeHbKOcllfotcQ0D5FlQ8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"doctor_name\": \"James Clear\",\r\n    \"description\": \"Atomic Habits\",\r\n    \"registrant_list\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9191/appointment/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9191",
+              "path": ["appointment", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Appointment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTQxYjQ0MDFjYWFhMjdhNGY2OWE4NiIsImZpcnN0X25hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYyNTYzNTI4OCwiZXhwIjoxNjI1NjM4ODg4fQ.BykzElDxps-AaX1JvyZVtkSeHbKOcllfotcQ0D5FlQ8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": \"60e47f034acf903d44227f85\",\r\n    \"doctor_name\": \"Ed Sheeran\",\r\n    \"description\": \"Covid 19 Diagnostic\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9191/appointment/update",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9191",
+              "path": ["appointment", "update"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Appointment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTQxYjQ0MDFjYWFhMjdhNGY2OWE4NiIsImZpcnN0X25hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYyNTYzNTI4OCwiZXhwIjoxNjI1NjM4ODg4fQ.BykzElDxps-AaX1JvyZVtkSeHbKOcllfotcQ0D5FlQ8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9191/appointment/delete/60e539fd6b988646a86fcbcf",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9191",
+              "path": ["appointment", "delete", "60e539fd6b988646a86fcbcf"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Apply Appointment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTQyNjIyN2YwNWE1M2ZjMGVjZDIzMSIsImZpcnN0X25hbWUiOiJhbW1hciIsInJvbGUiOiJwYXRpZW50IiwiaWF0IjoxNjI1NjM0NjIzLCJleHAiOjE2MjU2MzgyMjN9.SOvgZD2GvYGnJysk7RXncDorb5UEt_gsSIsJ45_zIsw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": \"60e47f034acf903d44227f85\",\r\n    \"user_id\": \"60e426227f05a53fc0ecd231\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9191/appointment/apply",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9191",
+              "path": ["appointment", "apply"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Appointment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTQyNjIyN2YwNWE1M2ZjMGVjZDIzMSIsImZpcnN0X25hbWUiOiJhbW1hciIsInJvbGUiOiJwYXRpZW50IiwiaWF0IjoxNjI1NjM0NjIzLCJleHAiOjE2MjU2MzgyMjN9.SOvgZD2GvYGnJysk7RXncDorb5UEt_gsSIsJ45_zIsw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": \"60e47f034acf903d44227f85\",\r\n    \"user_id\": \"60e426227f05a53fc0ecd231\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9191/appointment/cancel",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9191",
+              "path": ["appointment", "cancel"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
