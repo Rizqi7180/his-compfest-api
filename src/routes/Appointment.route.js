@@ -14,6 +14,7 @@ import {
 const router = express.Router()
 
 router.get('/', authMiddleware, AppointmentController.get)
+router.get('/:id', authMiddleware, AppointmentController.getOne)
 router.post(
   '/',
   authMiddleware,

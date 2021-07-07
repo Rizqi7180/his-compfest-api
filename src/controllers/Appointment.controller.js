@@ -40,6 +40,26 @@ export async function get(req, res, next) {
   }
 }
 
+export async function getOne(req, res, next) {
+  try {
+    const appointment_id = req.params.id
+
+    if (!appointment_id)
+      return next(new HttpException(400, 'Appointment Id is required'))
+
+    const data = await Appointment.findById(appointment_id)
+
+    return res.json({
+      type: 'success',
+      status: 200,
+      message: 'Appointment detail information',
+      data: data,
+    })
+  } catch (error) {
+    return next(new HttpException(500, error.message))
+  }
+}
+
 export async function update(req, res, next) {
   try {
     const { id, doctor_name, description, registrant_list } = req.body
