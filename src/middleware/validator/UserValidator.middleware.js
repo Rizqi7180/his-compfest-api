@@ -32,11 +32,6 @@ const validateCreateUser = [
     .notEmpty()
     .isLength({ min: 6 })
     .withMessage('password must contain at least 6 characters'),
-  body('role')
-    .exists()
-    .withMessage('role is required')
-    .isIn(['patient', 'admin'])
-    .withMessage('Invalid role type'),
 ]
 
 const validateAuthUser = [

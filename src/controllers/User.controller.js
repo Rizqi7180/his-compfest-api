@@ -6,8 +6,15 @@ import HttpException from '../utils/HttpException.js'
 
 export async function create(req, res, next) {
   try {
-    const { first_name, last_name, email, age, username, password, role } =
-      req.body
+    const {
+      first_name,
+      last_name,
+      email,
+      age,
+      username,
+      password,
+      role = 'patient',
+    } = req.body
 
     const user = await User.findOne({ email })
 

@@ -24,7 +24,7 @@ router.post(
   AppointmentController.create
 )
 router.put(
-  '/update',
+  '/',
   authMiddleware,
   isAdmin,
   validateUpdateAppointment,
@@ -32,7 +32,7 @@ router.put(
   AppointmentController.update
 )
 router.delete(
-  '/delete/:id',
+  '/:id',
   authMiddleware,
   isAdmin,
   validateDeleteAppointment,
