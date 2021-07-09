@@ -37,6 +37,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.2"
   },
+  "engines": {
+    "node": "14.16"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
