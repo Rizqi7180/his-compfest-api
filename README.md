@@ -2,6 +2,11 @@
 
 Healtcare Information System API for Software Engineer Academy at COMPFEST 13
 
+Login as Admin:
+
+- username: admin
+- password: admin123
+
 ## Prerequisites
 
 1. Node v14 >=
