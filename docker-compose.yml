@@ -33,7 +33,6 @@ services:
       - MONGO_INITDB_DATABASE=$MONGO_DB
     volumes:
       - mongodb:/data/db
-      - ./src/config/entrypoint/entrypoint.js:/docker-entrypoint-initdb.d/entrypoint.js:ro
     networks:
       - api-network
     ports:
