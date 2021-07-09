@@ -22,6 +22,12 @@ export async function create(req, res, next) {
       return next(new HttpException(401, 'Email has been registered!'))
     }
 
+    const usernameExists = await User.findOne({ username })
+
+    if (usernameExists) {
+      return next(new HttpException(401, 'Username has been used!'))
+    }
+
     const newUser = await User.create({
       first_name,
       last_name,

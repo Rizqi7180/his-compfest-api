@@ -2,7 +2,13 @@
 
 Healtcare Information System API for Software Engineer Academy at COMPFEST 13
 
-Login as Admin:
+## Demo
+
+```
+https://his-compfest.vercel.app
+```
+
+Admin:
 
 - username: admin
 - password: admin123
@@ -35,7 +41,13 @@ PORT=9191 # app port
 SECRET_KEY=compfest13 # change this to more secure secret key
 ```
 
-After that, start database service
+After that, go to `/src/config/db.js` and change mongoose connect to
+
+```js
+mongoose.connect(DOCKER_URI, options)
+```
+
+Start database service
 
 ```bash
 docker-compose up -d --build db
@@ -47,7 +59,7 @@ Then, check if service run successfully
 docker logs his_db
 ```
 
-after that, run development server on localhost:9191
+After that, run development server on localhost:9191
 
 ```bash
 npm start
@@ -63,6 +75,8 @@ To stop development server use `Ctrl+C` and type `Y`
 
 #### Using with MongoDB Atlas
 
+If you prefer using MongoDB Atlas (See [Database with MongoDB Atlas](#database-with-mongodb-atlas) to create it), configure following variables in your `.env` file
+
 ```bash
 MONGO_USERNAME=name # database username
 MONGO_PASSWORD=password # database password
@@ -73,15 +87,21 @@ PORT=9191 # app port
 SECRET_KEY=compfest13 # change this to more secure secret key
 ```
 
-Learn more about [MongoDB Atlas](https://docs.atlas.mongodb.com/getting-started/)
+After that, run development sever on localhost:9191
+
+```bash
+npm start
+```
 
 ### Deployment
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 You can use docker to deploy using nginx, but since it's to complex for me, I'll use Heroku and MongoDB Atlas to deploy it
 
 #### Docker
 
-Configure your own nginx image and docker-compose file
+If you want to try on your own, configure your own nginx reverse proxy and docker-compose file then run:
 
 ```bash
 docker-compose up -d --build
@@ -89,7 +109,13 @@ docker-compose up -d --build
 
 #### Database with MongoDB Atlas
 
-Get started with [MongoDB Atlas](https://docs.atlas.mongodb.com/getting-started/)
+If you prefer use MongoDB Atlas
+
+1. Create an Atlas account.
+2. Deploy a Free Tier Cluster.
+3. Add your connection IP Address to your IP access list.
+4. Create a database user for your Ccluster.
+5. Connect to your cluster with adding detail environment variables in `.env` for development (See [Using with MongoDB Atlas](#using-with-mongodb-atlas)) and add to your Heroku project setting configuration for production
 
 #### Node.js with Heroku
 
@@ -99,15 +125,13 @@ $ git push heroku main
 $ heroku open
 ```
 
-or
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+If theres an application error, make sure you configure environment variables in your Heroku project setting
 
 Learn more about deploying [Node.js to Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 
-## Available Endpoint
+## API References
 
-See all availables endpoint with the example in `./Healthcare Information System.postman_collection.json`
+If you want to try it, see all availables API endpoint with the example in `./Healthcare Information System.postman_collection.json` and change the URL to using your own or just use `https://his-compfest-api.herokuapp.com`
 
 ## Built using
 
@@ -139,7 +163,7 @@ See all availables endpoint with the example in `./Healthcare Information System
 - `src/routes` - Routes to access controller
 - `src/utils` - Helper functions
 
-## Documentation
+## References
 
 For more information about using Node.js on Heroku, see these Dev Center articles:
 
