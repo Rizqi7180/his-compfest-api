@@ -6,7 +6,11 @@ const swaggerDocs = require('../../swagger.json')
 
 const router = express.Router()
 
+const options = {
+  customSiteTitle: 'Healthcare Information System API',
+}
+
 router.use('/', swaggerUI.serve)
-router.get('/', swaggerUI.setup(swaggerDocs))
+router.get('/', swaggerUI.setup(swaggerDocs, options))
 
 export default router

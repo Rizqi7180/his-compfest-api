@@ -131,7 +131,7 @@ Learn more about deploying [Node.js to Heroku](https://devcenter.heroku.com/arti
 
 ## API References
 
-If you want to try it, see all availables API endpoint with the example in `./Healthcare Information System.postman_collection.json` and change the URL to using your own or just use `https://his-compfest-api.herokuapp.com`
+Go to [Healthcare Information System API](https://his-compfest-api.herokuapp.com) or if you want to try it in Postman or somewhere else, see all availables API endpoint with the example in `./Healthcare Information System.postman_collection.json` and change the URL to using your own or just use `https://his-compfest-api.herokuapp.com`
 
 ## Built using
 
