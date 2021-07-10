@@ -10,7 +10,7 @@ export async function create(req, res, next) {
     const newAppointment = await Appointment.create({
       doctor_name,
       description,
-      registrant_list,
+      registrant_list: [],
     })
 
     if (newAppointment) {

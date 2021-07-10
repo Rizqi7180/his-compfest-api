@@ -11,11 +11,6 @@ const validateCreateAppointment = [
     .withMessage('description is required')
     .isString()
     .withMessage('description must be alphabetical characters'),
-  body('registrant_list')
-    .exists()
-    .withMessage('registrant_list is required')
-    .isArray()
-    .withMessage('registrant_list must be array list of patient'),
 ]
 
 const validateUpdateAppointment = [

@@ -7,8 +7,10 @@ dotenv.config()
 import HttpException from './src/utils/HttpException.js'
 import errorMiddleware from './src/middleware/error.middleware.js'
 import mongoose from './src/config/db.js'
+
 import user from './src/routes/User.route.js'
 import appointment from './src/routes/Appointment.route.js'
+import docs from './src/routes/Docs.route.js'
 
 const app = express()
 const PORT = process.env.PORT || 9191
@@ -23,10 +25,7 @@ app.use(cors())
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-app.get('/', (req, res) => {
-  res.send('Hi')
-})
-
+app.use('/', docs)
 app.use('/user', user)
 app.use('/appointment', appointment)
 

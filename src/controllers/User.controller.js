@@ -35,7 +35,7 @@ export async function create(req, res, next) {
       age,
       username,
       password,
-      role,
+      role: 'patient',
     })
 
     if (newUser) {

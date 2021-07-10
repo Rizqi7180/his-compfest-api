@@ -17,6 +17,7 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   connectTimeoutMS: 10000,
+  useFindAndModify: false,
 }
 
 // Use with docker
